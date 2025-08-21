@@ -1,0 +1,218 @@
+2025-07-30 13:11:25,840 - INFO - Ծրագիրը բարչեհաջող սկսեց աշխատանքը
+2025-07-30 13:11:25,842 - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2025-07-30 13:11:26,218 - DEBUG - https://api.telegram.org:443 "POST /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/sendMessage?chat_id=5374336141&text=%F0%9F%91%8B+Welcome%21 HTTP/1.1" 200 291
+2025-07-30 13:11:26,326 - DEBUG - https://api.telegram.org:443 "POST /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/sendMessage?chat_id=5374336141&text=%F0%9F%91%8B&reply_markup=%7B%22keyboard%22%3A+%5B%5B%7B%22text%22%3A+%22Keyboard%22%7D%2C+%7B%22text%22%3A+%22Mouse%22%7D%2C+%7B%22text%22%3A+%22System%22%7D%5D%2C+%5B%7B%22text%22%3A+%22screenshot%22%7D%5D%5D%2C+%22resize_keyboard%22%3A+true%7D HTTP/1.1" 200 282
+2025-07-30 13:11:28,266 - DEBUG - https://api.telegram.org:443 "GET /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/getUpdates?offset=934251229&timeout=20 HTTP/1.1" 200 317
+2025-07-30 13:11:28,270 - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2025-07-30 13:11:28,519 - DEBUG - https://api.telegram.org:443 "POST /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/sendMessage?chat_id=5374336141&text=keyboard+control&reply_markup=%7B%22keyboard%22%3A+%5B%5B%7B%22text%22%3A+%22%5Cu2328+off%22%7D%2C+%7B%22text%22%3A+%22%5Cu2328+on%22%7D%2C+%7B%22text%22%3A+%22%28Ctrl+%2B+W%29+close+active+window%22%7D%5D%2C+%5B%7B%22text%22%3A+%22%28Ctrl+%2B+W%29+close+active+window%22%7D%2C+%7B%22text%22%3A+%22%28+space+%29%22%7D%2C+%7B%22text%22%3A+%22%28Win+%2B+D%29+to+desktop%22%7D%5D%2C+%5B%7B%22text%22%3A+%22home+page%22%7D%2C+%7B%22text%22%3A+%22screenshot%22%7D%2C+%7B%22text%22%3A+%22any+button%22%7D%5D%5D%2C+%22resize_keyboard%22%3A+true%7D HTTP/1.1" 200 286
+2025-07-30 13:11:29,880 - DEBUG - https://api.telegram.org:443 "GET /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/getUpdates?offset=934251230&timeout=20 HTTP/1.1" 200 319
+2025-07-30 13:11:29,881 - INFO - keyboard off հրամանի կատարման մեկնարկ
+2025-07-30 13:11:29,991 - DEBUG - https://api.telegram.org:443 "POST /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/sendMessage?chat_id=5374336141&text=keyboard+has+been+blocked HTTP/1.1" 200 295
+2025-07-30 13:11:29,992 - INFO - block_keyboard բլոկի կանչ
+2025-07-30 13:11:30,186 - INFO - ստեղնաշարը արգելափակվեց
+2025-07-30 13:11:39,161 - DEBUG - https://api.telegram.org:443 "GET /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/getUpdates?offset=934251231&timeout=20 HTTP/1.1" 200 318
+2025-07-30 13:11:39,162 - INFO - keyboard on հրամանի կատարման մեկնարկ
+2025-07-30 13:11:39,255 - DEBUG - https://api.telegram.org:443 "POST /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/sendMessage?chat_id=5374336141&text=keyboard+has+been+unblocked HTTP/1.1" 200 297
+2025-07-30 13:11:39,256 - INFO - block_keyboard բլոկի կանչ
+2025-07-30 13:11:39,256 - INFO - Ստեղնաշարը բացվեց
+2025-07-30 13:11:41,469 - DEBUG - https://api.telegram.org:443 "GET /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/getUpdates?offset=934251232&timeout=20 HTTP/1.1" 200 339
+2025-07-30 13:11:41,470 - INFO - (ctrl + w ) հոտկեյի սեղմման մեկնարկ
+2025-07-30 13:11:41,538 - DEBUG - https://api.telegram.org:443 "GET /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/getUpdates?offset=934251233&timeout=20 HTTP/1.1" 200 339
+2025-07-30 13:11:41,548 - INFO - (ctrl + w ) հոտկեյի սեղմման մեկնարկ
+2025-07-30 13:11:41,674 - DEBUG - https://api.telegram.org:443 "POST /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/sendMessage?chat_id=5374336141&text=%28Ctrl+%2B+W%29+hotkey+has+been+pressed HTTP/1.1" 200 304
+2025-07-30 13:11:41,676 - INFO - հոտկեյը սեղմվեց
+2025-07-30 13:11:41,768 - DEBUG - https://api.telegram.org:443 "POST /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/sendMessage?chat_id=5374336141&text=%28Ctrl+%2B+W%29+hotkey+has+been+pressed HTTP/1.1" 200 304
+2025-07-30 13:11:41,769 - INFO - հոտկեյը սեղմվեց
+2025-07-30 13:11:46,218 - DEBUG - https://api.telegram.org:443 "GET /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/getUpdates?offset=934251234&timeout=20 HTTP/1.1" 200 329
+2025-07-30 13:11:46,219 - INFO - win + d հոտկեյի սեղմման մեկնարկ
+2025-07-30 13:11:46,411 - DEBUG - https://api.telegram.org:443 "POST /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/sendMessage?chat_id=5374336141&text=%28Win+%2B+D%29+hotkey+has+been+pressed HTTP/1.1" 200 303
+2025-07-30 13:11:46,411 - INFO - win + d ն սեղմվեց
+2025-07-30 13:11:47,343 - DEBUG - https://api.telegram.org:443 "GET /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/getUpdates?offset=934251235&timeout=20 HTTP/1.1" 200 329
+2025-07-30 13:11:47,344 - INFO - win + d հոտկեյի սեղմման մեկնարկ
+2025-07-30 13:11:47,540 - DEBUG - https://api.telegram.org:443 "POST /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/sendMessage?chat_id=5374336141&text=%28Win+%2B+D%29+hotkey+has+been+pressed HTTP/1.1" 200 303
+2025-07-30 13:11:47,540 - INFO - win + d ն սեղմվեց
+2025-07-30 13:11:48,877 - DEBUG - https://api.telegram.org:443 "GET /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/getUpdates?offset=934251236&timeout=20 HTTP/1.1" 200 319
+2025-07-30 13:11:48,878 - INFO - screenshot հրամանի կատարման սկիզբ
+2025-07-30 13:11:50,594 - DEBUG - https://api.telegram.org:443 "POST /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/sendPhoto?chat_id=5374336141 HTTP/1.1" 200 1157
+2025-07-30 13:11:50,595 - INFO - սքրինշոթ հաջողությամբ ուղարկվեց
+2025-07-30 13:11:52,301 - DEBUG - https://api.telegram.org:443 "GET /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/getUpdates?offset=934251237&timeout=20 HTTP/1.1" 200 318
+2025-07-30 13:11:52,302 - INFO - space ի սեղմման հրամանի մեկնարկ
+2025-07-30 13:11:52,505 - DEBUG - https://api.telegram.org:443 "POST /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/sendMessage?chat_id=5374336141&text=button+%28space%29+has+been+pressed HTTP/1.1" 200 301
+2025-07-30 13:11:52,506 - INFO - space ը սեղմված է
+2025-07-30 13:11:53,756 - DEBUG - https://api.telegram.org:443 "GET /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/getUpdates?offset=934251238&timeout=20 HTTP/1.1" 200 318
+2025-07-30 13:11:53,756 - INFO - space ի սեղմման հրամանի մեկնարկ
+2025-07-30 13:11:53,950 - DEBUG - https://api.telegram.org:443 "POST /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/sendMessage?chat_id=5374336141&text=button+%28space%29+has+been+pressed HTTP/1.1" 200 301
+2025-07-30 13:11:53,951 - INFO - space ը սեղմված է
+2025-07-30 13:11:55,356 - DEBUG - https://api.telegram.org:443 "GET /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/getUpdates?offset=934251239&timeout=20 HTTP/1.1" 200 318
+2025-07-30 13:11:55,526 - DEBUG - https://api.telegram.org:443 "POST /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/sendMessage?chat_id=5374336141&text=home+page&reply_markup=%7B%22keyboard%22%3A+%5B%5B%7B%22text%22%3A+%22Keyboard%22%7D%2C+%7B%22text%22%3A+%22Mouse%22%7D%2C+%7B%22text%22%3A+%22System%22%7D%5D%2C+%5B%7B%22text%22%3A+%22screenshot%22%7D%5D%5D%2C+%22resize_keyboard%22%3A+true%7D HTTP/1.1" 200 279
+2025-07-30 13:11:56,559 - DEBUG - https://api.telegram.org:443 "GET /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/getUpdates?offset=934251240&timeout=20 HTTP/1.1" 200 314
+2025-07-30 13:11:56,671 - DEBUG - https://api.telegram.org:443 "POST /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/sendMessage?chat_id=5374336141&text=mouse+control&reply_markup=%7B%22keyboard%22%3A+%5B%5B%7B%22text%22%3A+%22%5Cud83d%5Cuddb1+off%22%7D%2C+%7B%22text%22%3A+%22%5Cud83d%5Cuddb1+on%22%7D%2C+%7B%22text%22%3A+%22left+click%22%7D%5D%2C+%5B%7B%22text%22%3A+%22right+click%22%7D%2C+%7B%22text%22%3A+%22home+page%22%7D%2C+%7B%22text%22%3A+%22screenshot%22%7D%5D%5D%2C+%22resize_keyboard%22%3A+true%7D HTTP/1.1" 200 283
+2025-07-30 13:11:58,244 - DEBUG - https://api.telegram.org:443 "GET /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/getUpdates?offset=934251241&timeout=20 HTTP/1.1" 200 325
+2025-07-30 13:11:58,245 - INFO - mouse block հրամանի կատարման մեկնարկ
+2025-07-30 13:11:58,246 - INFO - block mouse հրամանի մեկնարկ
+2025-07-30 13:12:06,388 - DEBUG - https://api.telegram.org:443 "GET /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/getUpdates?offset=934251242&timeout=20 HTTP/1.1" 200 324
+2025-07-30 13:12:06,394 - INFO - mouse on հրամանի կատարման մեկնարկ
+2025-07-30 13:12:06,601 - DEBUG - https://api.telegram.org:443 "POST /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/sendMessage?chat_id=5374336141&text=mouse+has+been+unblocked HTTP/1.1" 200 294
+2025-07-30 13:12:06,602 - INFO - մկնիկը բացվեց
+2025-07-30 13:12:10,062 - DEBUG - https://api.telegram.org:443 "GET /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/getUpdates?offset=934251243&timeout=20 HTTP/1.1" 200 319
+2025-07-30 13:12:10,063 - INFO - left click հրամանի կատարման մեկնարկ
+2025-07-30 13:12:10,176 - INFO - left click հրամանը կատարված է
+2025-07-30 13:12:10,267 - DEBUG - https://api.telegram.org:443 "POST /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/sendMessage?chat_id=5374336141&text=left+click+has+been+clicked HTTP/1.1" 200 297
+2025-07-30 13:12:11,660 - DEBUG - https://api.telegram.org:443 "GET /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/getUpdates?offset=934251244&timeout=20 HTTP/1.1" 200 319
+2025-07-30 13:12:11,661 - INFO - left click հրամանի կատարման մեկնարկ
+2025-07-30 13:12:11,778 - INFO - left click հրամանը կատարված է
+2025-07-30 13:12:11,872 - DEBUG - https://api.telegram.org:443 "POST /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/sendMessage?chat_id=5374336141&text=left+click+has+been+clicked HTTP/1.1" 200 297
+2025-07-30 13:12:12,807 - DEBUG - https://api.telegram.org:443 "GET /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/getUpdates?offset=934251245&timeout=20 HTTP/1.1" 200 320
+2025-07-30 13:12:12,808 - INFO - right click հրամանի կատարման մեկնարկ
+2025-07-30 13:12:12,927 - INFO - right click հրամանը կատարված է
+2025-07-30 13:12:13,015 - DEBUG - https://api.telegram.org:443 "POST /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/sendMessage?chat_id=5374336141&text=right+click+has+been+clicked HTTP/1.1" 200 298
+2025-07-30 13:12:16,437 - DEBUG - https://api.telegram.org:443 "GET /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/getUpdates?offset=934251246&timeout=20 HTTP/1.1" 200 320
+2025-07-30 13:12:16,438 - INFO - right click հրամանի կատարման մեկնարկ
+2025-07-30 13:12:16,545 - INFO - right click հրամանը կատարված է
+2025-07-30 13:12:16,637 - DEBUG - https://api.telegram.org:443 "POST /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/sendMessage?chat_id=5374336141&text=right+click+has+been+clicked HTTP/1.1" 200 298
+2025-07-30 13:12:17,556 - DEBUG - https://api.telegram.org:443 "GET /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/getUpdates?offset=934251247&timeout=20 HTTP/1.1" 200 320
+2025-07-30 13:12:17,557 - INFO - right click հրամանի կատարման մեկնարկ
+2025-07-30 13:12:17,660 - INFO - right click հրամանը կատարված է
+2025-07-30 13:12:17,748 - DEBUG - https://api.telegram.org:443 "POST /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/sendMessage?chat_id=5374336141&text=right+click+has+been+clicked HTTP/1.1" 200 298
+2025-07-30 13:12:24,881 - DEBUG - https://api.telegram.org:443 "GET /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/getUpdates?offset=934251248&timeout=20 HTTP/1.1" 200 319
+2025-07-30 13:12:24,881 - INFO - screenshot հրամանի կատարման սկիզբ
+2025-07-30 13:12:26,217 - DEBUG - https://api.telegram.org:443 "POST /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/sendPhoto?chat_id=5374336141 HTTP/1.1" 200 1157
+2025-07-30 13:12:26,218 - INFO - սքրինշոթ հաջողությամբ ուղարկվեց
+2025-07-30 13:12:27,373 - DEBUG - https://api.telegram.org:443 "GET /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/getUpdates?offset=934251249&timeout=20 HTTP/1.1" 200 318
+2025-07-30 13:12:27,472 - DEBUG - https://api.telegram.org:443 "POST /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/sendMessage?chat_id=5374336141&text=home+page&reply_markup=%7B%22keyboard%22%3A+%5B%5B%7B%22text%22%3A+%22Keyboard%22%7D%2C+%7B%22text%22%3A+%22Mouse%22%7D%2C+%7B%22text%22%3A+%22System%22%7D%5D%2C+%5B%7B%22text%22%3A+%22screenshot%22%7D%5D%5D%2C+%22resize_keyboard%22%3A+true%7D HTTP/1.1" 200 279
+2025-07-30 13:12:28,946 - DEBUG - https://api.telegram.org:443 "GET /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/getUpdates?offset=934251250&timeout=20 HTTP/1.1" 200 315
+2025-07-30 13:12:29,176 - DEBUG - https://api.telegram.org:443 "POST /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/sendMessage?chat_id=5374336141&text=system+control&reply_markup=%7B%22keyboard%22%3A+%5B%5B%7B%22text%22%3A+%22screenshot%22%7D%2C+%7B%22text%22%3A+%22system+off%22%7D%2C+%7B%22text%22%3A+%22system+reboot%22%7D%5D%2C+%5B%7B%22text%22%3A+%22home+page%22%7D%2C+%7B%22text%22%3A+%22open+link%22%7D%2C+%7B%22text%22%3A+%22volume+control%22%7D%5D%2C+%5B%7B%22text%22%3A+%22system+information%22%7D%2C+%7B%22text%22%3A+%22camera+photo%22%7D%2C+%7B%22text%22%3A+%22clipboard%22%7D%5D%2C+%5B%7B%22text%22%3A+%22start+recording%22%7D%2C+%7B%22text%22%3A+%22stop+recording%22%7D%5D%5D%2C+%22resize_keyboard%22%3A+true%7D HTTP/1.1" 200 284
+2025-07-30 13:12:36,798 - DEBUG - https://api.telegram.org:443 "GET /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/getUpdates?offset=934251251&timeout=20 HTTP/1.1" 200 327
+2025-07-30 13:12:36,799 - INFO - system info հրամանի կատարման մեկնարկ
+2025-07-30 13:12:37,815 - INFO - Փոփոխականները բարեհաջող պահպանվեցին
+2025-07-30 13:12:37,957 - DEBUG - https://api.telegram.org:443 "POST /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/sendMessage?chat_id=5374336141&text=this+is+your+system+info HTTP/1.1" 200 294
+2025-07-30 13:12:38,105 - DEBUG - https://api.telegram.org:443 "POST /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/sendMessage?chat_id=5374336141&text=%F0%9F%91%87 HTTP/1.1" 200 282
+2025-07-30 13:12:38,267 - DEBUG - https://api.telegram.org:443 "POST /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/sendMessage?chat_id=5374336141&text=System%3A+Windows%0ANode+Name%3A+DESKTOP-8MDFHCB%0AOS+Release%3A+11%0AVersion%3A+10.0.26100%0AArchitecture%3A+%28%2764bit%27%2C+%27WindowsPE%27%29 HTTP/1.1" 200 388
+2025-07-30 13:12:38,421 - DEBUG - https://api.telegram.org:443 "POST /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/sendMessage?chat_id=5374336141&text=CPU+Usage%3A+4.9%25%0ANumber+of+Cores%3A+16%0A HTTP/1.1" 200 306
+2025-07-30 13:12:38,557 - DEBUG - https://api.telegram.org:443 "POST /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/sendMessage?chat_id=5374336141&text=RAM+Usage%3A+78.6%25%0ATotal+RAM%3A+15.46+GB%0AAvailable+RAM%3A+3.31+GB%0A HTTP/1.1" 200 331
+2025-07-30 13:12:38,696 - DEBUG - https://api.telegram.org:443 "POST /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/sendMessage?chat_id=5374336141&text=Disk+Size%3A+931.61+GB%0AUsed%3A+90.64+GB%0AFree%3A+840.97+GB%0AUsage+Percentage%3A+9.7%25 HTTP/1.1" 200 347
+2025-07-30 13:12:42,811 - DEBUG - https://api.telegram.org:443 "GET /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/getUpdates?offset=934251252&timeout=20 HTTP/1.1" 200 321
+2025-07-30 13:12:42,813 - INFO - camera photo հրամանի կատարման մեկնարկ
+2025-07-30 13:12:42,923 - DEBUG - https://api.telegram.org:443 "POST /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/sendMessage?chat_id=5374336141&text=your+camera+photo HTTP/1.1" 200 287
+2025-07-30 13:12:44,864 - DEBUG - https://api.telegram.org:443 "POST /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/sendPhoto?chat_id=5374336141 HTTP/1.1" 200 797
+2025-07-30 13:12:44,864 - INFO - Տեսախցիկի լուսանկարն ուղարկված է
+2025-07-30 13:12:47,777 - DEBUG - https://api.telegram.org:443 "GET /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/getUpdates?offset=934251253&timeout=20 HTTP/1.1" 200 318
+2025-07-30 13:12:47,778 - INFO - Կլիփ բորդ հրամանի կատարման մակնարկ
+2025-07-30 13:12:47,976 - DEBUG - https://api.telegram.org:443 "POST /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/sendMessage?chat_id=5374336141&text=pip+install+sounddevice+scipy+telebot%0D%0A HTTP/1.1" 200 307
+2025-07-30 13:12:47,976 - INFO - հրամանը կատարված է
+2025-07-30 13:12:53,459 - DEBUG - https://api.telegram.org:443 "GET /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/getUpdates?offset=934251254&timeout=20 HTTP/1.1" 200 324
+2025-07-30 13:12:53,460 - INFO - Զապիսը սկսելու հրամանի կանչ
+2025-07-30 13:12:53,462 - INFO - Զապիսը սկսված է
+2025-07-30 13:12:53,713 - DEBUG - https://api.telegram.org:443 "POST /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/sendMessage?chat_id=5374336141&text=Recording+has+been+started&reply_parameters=%7B%22message_id%22%3A+283%7D HTTP/1.1" 200 582
+2025-07-30 13:12:58,847 - DEBUG - https://api.telegram.org:443 "GET /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/getUpdates?offset=934251255&timeout=20 HTTP/1.1" 200 327
+2025-07-30 13:12:58,848 - INFO - system info հրամանի կատարման մեկնարկ
+2025-07-30 13:12:59,857 - INFO - Փոփոխականները բարեհաջող պահպանվեցին
+2025-07-30 13:12:59,946 - DEBUG - https://api.telegram.org:443 "POST /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/sendMessage?chat_id=5374336141&text=this+is+your+system+info HTTP/1.1" 200 294
+2025-07-30 13:13:00,041 - DEBUG - https://api.telegram.org:443 "POST /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/sendMessage?chat_id=5374336141&text=%F0%9F%91%87 HTTP/1.1" 200 282
+2025-07-30 13:13:00,128 - DEBUG - https://api.telegram.org:443 "POST /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/sendMessage?chat_id=5374336141&text=System%3A+Windows%0ANode+Name%3A+DESKTOP-8MDFHCB%0AOS+Release%3A+11%0AVersion%3A+10.0.26100%0AArchitecture%3A+%28%2764bit%27%2C+%27WindowsPE%27%29 HTTP/1.1" 200 388
+2025-07-30 13:13:00,235 - DEBUG - https://api.telegram.org:443 "POST /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/sendMessage?chat_id=5374336141&text=CPU+Usage%3A+8.1%25%0ANumber+of+Cores%3A+16%0A HTTP/1.1" 200 306
+2025-07-30 13:13:00,328 - DEBUG - https://api.telegram.org:443 "POST /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/sendMessage?chat_id=5374336141&text=RAM+Usage%3A+78.6%25%0ATotal+RAM%3A+15.46+GB%0AAvailable+RAM%3A+3.30+GB%0A HTTP/1.1" 200 331
+2025-07-30 13:13:00,417 - DEBUG - https://api.telegram.org:443 "POST /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/sendMessage?chat_id=5374336141&text=Disk+Size%3A+931.61+GB%0AUsed%3A+90.61+GB%0AFree%3A+841.00+GB%0AUsage+Percentage%3A+9.7%25 HTTP/1.1" 200 347
+2025-07-30 13:13:03,391 - DEBUG - https://api.telegram.org:443 "GET /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/getUpdates?offset=934251256&timeout=20 HTTP/1.1" 200 323
+2025-07-30 13:13:03,392 - INFO - Զապիսը անջատելու հրամանի կանչ
+2025-07-30 13:13:03,392 - INFO - Զապիսը ավարտվել է ֆայլը պահպանված է
+2025-07-30 13:13:03,482 - DEBUG - https://api.telegram.org:443 "POST /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/sendMessage?chat_id=5374336141&text=Recording+has+been+stopeed%2C+file+saved&reply_parameters=%7B%22message_id%22%3A+292%7D HTTP/1.1" 200 593
+2025-07-30 13:13:03,483 - INFO - Զապիսը անջատեցի ուղղարկում եմ ֆայլը
+2025-07-30 13:13:09,399 - DEBUG - https://api.telegram.org:443 "POST /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/sendVideo?chat_id=5374336141 HTTP/1.1" 200 865
+2025-07-30 13:13:13,804 - DEBUG - https://api.telegram.org:443 "GET /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/getUpdates?offset=934251257&timeout=20 HTTP/1.1" 200 314
+2025-07-30 13:13:13,805 - INFO - break bot հրամանի կատարման մեկնարկ
+2025-07-30 13:13:13,915 - DEBUG - https://api.telegram.org:443 "POST /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/sendMessage?chat_id=5374336141&text=bot+has+been+breaked HTTP/1.1" 200 290
+2025-07-30 13:13:13,915 - INFO - block bot հրամանը կատարված է լոգ ֆայլը ուղղարկված է չատ այդի ով
+2025-07-30 13:13:13,915 - ERROR - block bot ի կատարման սխալ
+2025-07-30 13:13:33,876 - DEBUG - https://api.telegram.org:443 "GET /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/getUpdates?offset=934251258&timeout=20 HTTP/1.1" 200 23
+2025-07-30 13:13:53,945 - DEBUG - https://api.telegram.org:443 "GET /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/getUpdates?offset=934251258&timeout=20 HTTP/1.1" 200 23
+2025-07-30 13:14:10,947 - INFO - Ծրագիրը բարչեհաջող սկսեց աշխատանքը
+2025-07-30 13:14:10,949 - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2025-07-30 13:14:11,202 - DEBUG - https://api.telegram.org:443 "POST /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/sendMessage?chat_id=5374336141&text=%F0%9F%91%8B+Welcome%21 HTTP/1.1" 200 291
+2025-07-30 13:14:11,301 - DEBUG - https://api.telegram.org:443 "POST /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/sendMessage?chat_id=5374336141&text=%F0%9F%91%8B&reply_markup=%7B%22keyboard%22%3A+%5B%5B%7B%22text%22%3A+%22Keyboard%22%7D%2C+%7B%22text%22%3A+%22Mouse%22%7D%2C+%7B%22text%22%3A+%22System%22%7D%5D%2C+%5B%7B%22text%22%3A+%22screenshot%22%7D%5D%5D%2C+%22resize_keyboard%22%3A+true%7D HTTP/1.1" 200 282
+2025-07-30 13:14:15,563 - DEBUG - https://api.telegram.org:443 "GET /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/getUpdates?offset=934251259&timeout=20 HTTP/1.1" 200 314
+2025-07-30 13:14:15,564 - INFO - break bot հրամանի կատարման մեկնարկ
+2025-07-30 13:14:15,566 - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2025-07-30 13:14:15,814 - DEBUG - https://api.telegram.org:443 "POST /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/sendMessage?chat_id=5374336141&text=bot+has+been+breaked HTTP/1.1" 200 290
+2025-07-30 13:14:15,815 - INFO - block bot հրամանը կատարված է լոգ ֆայլը ուղղարկված է չատ այդի ով
+2025-07-30 13:14:16,002 - DEBUG - https://api.telegram.org:443 "POST /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/sendDocument?chat_id=5374336141 HTTP/1.1" 200 470
+2025-07-30 13:14:16,002 - INFO - break system հրամանի մեկնարկ
+2025-07-31 22:57:01,590 - INFO - Ծրագիրը բարչեհաջող սկսեց աշխատանքը
+2025-07-31 22:57:01,599 - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2025-07-31 22:57:01,842 - DEBUG - https://api.telegram.org:443 "POST /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/sendMessage?chat_id=5374336141&text=%F0%9F%91%8B+Welcome%21 HTTP/1.1" 200 291
+2025-07-31 22:57:01,938 - DEBUG - https://api.telegram.org:443 "POST /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/sendMessage?chat_id=5374336141&text=%F0%9F%91%8B&reply_markup=%7B%22keyboard%22%3A+%5B%5B%7B%22text%22%3A+%22Keyboard%22%7D%2C+%7B%22text%22%3A+%22Mouse%22%7D%2C+%7B%22text%22%3A+%22System%22%7D%5D%2C+%5B%7B%22text%22%3A+%22screenshot%22%7D%5D%5D%2C+%22resize_keyboard%22%3A+true%7D HTTP/1.1" 200 282
+2025-07-31 22:57:03,090 - DEBUG - https://api.telegram.org:443 "GET /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/getUpdates?offset=934251261&timeout=20 HTTP/1.1" 200 315
+2025-07-31 22:57:03,096 - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2025-07-31 22:57:07,154 - DEBUG - https://api.telegram.org:443 "POST /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/sendMessage?chat_id=5374336141&text=system+control&reply_markup=%7B%22keyboard%22%3A+%5B%5B%7B%22text%22%3A+%22screenshot%22%7D%2C+%7B%22text%22%3A+%22system+off%22%7D%2C+%7B%22text%22%3A+%22system+reboot%22%7D%5D%2C+%5B%7B%22text%22%3A+%22home+page%22%7D%2C+%7B%22text%22%3A+%22open+link%22%7D%2C+%7B%22text%22%3A+%22volume+control%22%7D%5D%2C+%5B%7B%22text%22%3A+%22system+information%22%7D%2C+%7B%22text%22%3A+%22camera+photo%22%7D%2C+%7B%22text%22%3A+%22clipboard%22%7D%5D%2C+%5B%7B%22text%22%3A+%22start+recording%22%7D%2C+%7B%22text%22%3A+%22stop+recording%22%7D%2C+%7B%22text%22%3A+%22wifi+on%22%7D%5D%2C+%5B%7B%22text%22%3A+%22wifi+off%22%7D%2C+%7B%22text%22%3A+%22speak+text+english%22%7D%2C+%7B%22text%22%3A+%22speak+text+russian%22%7D%5D%5D%2C+%22resize_keyboard%22%3A+true%7D HTTP/1.1" 200 284
+2025-07-31 22:57:08,204 - DEBUG - https://api.telegram.org:443 "GET /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/getUpdates?offset=934251262&timeout=20 HTTP/1.1" 200 327
+2025-07-31 22:57:08,220 - DEBUG - Calling CoUninitialize()
+2025-07-31 22:57:08,220 - DEBUG - CoUninitialize() done.
+2025-07-31 22:57:35,811 - INFO - Ծրագիրը բարչեհաջող սկսեց աշխատանքը
+2025-07-31 22:57:35,814 - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2025-07-31 22:57:39,644 - DEBUG - https://api.telegram.org:443 "GET /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/getUpdates?offset=934251264&timeout=20 HTTP/1.1" 200 373
+2025-07-31 22:57:39,645 - INFO - Ծրագիրը բարչեհաջող սկսեց աշխատանքը
+2025-07-31 22:57:39,650 - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2025-07-31 22:57:39,886 - DEBUG - https://api.telegram.org:443 "POST /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/sendMessage?chat_id=5374336141&text=%F0%9F%91%8B+Welcome%21 HTTP/1.1" 200 291
+2025-07-31 22:57:39,933 - DEBUG - https://api.telegram.org:443 "POST /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/sendMessage?chat_id=5374336141&text=%F0%9F%91%8B+Welcome%21 HTTP/1.1" 200 291
+2025-07-31 22:57:40,005 - DEBUG - https://api.telegram.org:443 "POST /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/sendMessage?chat_id=5374336141&text=%F0%9F%91%8B&reply_markup=%7B%22keyboard%22%3A+%5B%5B%7B%22text%22%3A+%22Keyboard%22%7D%2C+%7B%22text%22%3A+%22Mouse%22%7D%2C+%7B%22text%22%3A+%22System%22%7D%5D%2C+%5B%7B%22text%22%3A+%22screenshot%22%7D%5D%5D%2C+%22resize_keyboard%22%3A+true%7D HTTP/1.1" 200 282
+2025-07-31 22:57:40,063 - DEBUG - https://api.telegram.org:443 "POST /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/sendMessage?chat_id=5374336141&text=%F0%9F%91%8B&reply_markup=%7B%22keyboard%22%3A+%5B%5B%7B%22text%22%3A+%22Keyboard%22%7D%2C+%7B%22text%22%3A+%22Mouse%22%7D%2C+%7B%22text%22%3A+%22System%22%7D%5D%2C+%5B%7B%22text%22%3A+%22screenshot%22%7D%5D%5D%2C+%22resize_keyboard%22%3A+true%7D HTTP/1.1" 200 282
+2025-07-31 22:57:41,232 - DEBUG - https://api.telegram.org:443 "GET /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/getUpdates?offset=934251265&timeout=20 HTTP/1.1" 200 315
+2025-07-31 22:57:41,358 - DEBUG - https://api.telegram.org:443 "POST /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/sendMessage?chat_id=5374336141&text=system+control&reply_markup=%7B%22keyboard%22%3A+%5B%5B%7B%22text%22%3A+%22screenshot%22%7D%2C+%7B%22text%22%3A+%22system+off%22%7D%2C+%7B%22text%22%3A+%22system+reboot%22%7D%5D%2C+%5B%7B%22text%22%3A+%22home+page%22%7D%2C+%7B%22text%22%3A+%22open+link%22%7D%2C+%7B%22text%22%3A+%22volume+control%22%7D%5D%2C+%5B%7B%22text%22%3A+%22system+information%22%7D%2C+%7B%22text%22%3A+%22camera+photo%22%7D%2C+%7B%22text%22%3A+%22clipboard%22%7D%5D%2C+%5B%7B%22text%22%3A+%22start+recording%22%7D%2C+%7B%22text%22%3A+%22stop+recording%22%7D%2C+%7B%22text%22%3A+%22wifi+on%22%7D%5D%2C+%5B%7B%22text%22%3A+%22wifi+off%22%7D%2C+%7B%22text%22%3A+%22speak+text+english%22%7D%2C+%7B%22text%22%3A+%22speak+text+russian%22%7D%5D%5D%2C+%22resize_keyboard%22%3A+true%7D HTTP/1.1" 200 284
+2025-07-31 22:57:42,624 - DEBUG - https://api.telegram.org:443 "GET /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/getUpdates?offset=934251266&timeout=20 HTTP/1.1" 200 327
+2025-07-31 22:57:42,625 - INFO - speak text russian հրամանի կատարման կանչ
+2025-07-31 22:57:42,703 - INFO - Imported existing <module 'comtypes.gen' from 'C:\\Users\\USER\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\comtypes\\gen\\__init__.py'>
+2025-07-31 22:57:42,704 - INFO - Using writeable comtypes cache directory: 'C:\Users\USER\AppData\Local\Programs\Python\Python313\Lib\site-packages\comtypes\gen'
+2025-07-31 22:57:42,900 - DEBUG - SAPI.SPVoice -> {96749377-3391-11D2-9EE3-00C04F797396}
+2025-07-31 22:57:42,900 - DEBUG - CoCreateInstance({96749377-3391-11D2-9EE3-00C04F797396}, clsctx=None, interface=None)
+2025-07-31 22:57:42,922 - DEBUG - GetBestInterface(<POINTER(IUnknown) ptr=0x1debdd942f0 at 1debdd05250>)
+2025-07-31 22:57:42,923 - DEBUG - Does implement IProvideClassInfo
+2025-07-31 22:57:42,927 - DEBUG - Default interface is {269316D8-57BD-11D2-9EEE-00C04F797396}
+2025-07-31 22:57:42,927 - DEBUG - Release <POINTER(IUnknown) ptr=0x1debdd94330 at 1debe317850>
+2025-07-31 22:57:42,928 - DEBUG - GetModule(TLIBATTR(GUID={C866CA3A-32F7-11D2-9602-00C04F8EE628}, Version=5.4, LCID=0, FLags=0x8))
+2025-07-31 22:57:42,928 - DEBUG - Implements default interface from typeinfo <class 'comtypes.gen._C866CA3A_32F7_11D2_9602_00C04F8EE628_0_5_4.ISpeechVoice'>
+2025-07-31 22:57:42,928 - DEBUG - Final result is <POINTER(ISpeechVoice) ptr=0x1debdd94330 at 1debe317950>
+2025-07-31 22:57:42,929 - DEBUG - Release <POINTER(IProvideClassInfo) ptr=0x1debdd94350 at 1debe317450>
+2025-07-31 22:57:42,929 - DEBUG - Release <POINTER(ITypeInfo) ptr=0x1debcc9ab78 at 1debe3174d0>
+2025-07-31 22:57:42,929 - DEBUG - Release <POINTER(ITypeInfo) ptr=0x1debcc9abd0 at 1debe317550>
+2025-07-31 22:57:42,929 - DEBUG - Release <POINTER(ITypeLib) ptr=0x1debc9b6150 at 1debe317850>
+2025-07-31 22:57:42,930 - DEBUG - Release <POINTER(IUnknown) ptr=0x1debdd942f0 at 1debdd05250>
+2025-07-31 22:57:42,931 - DEBUG - <POINTER(ISpeechVoice) ptr=0x1debdd94330 at 1debe317950> using sinkinterface from clsid <class 'comtypes.gen._C866CA3A_32F7_11D2_9602_00C04F8EE628_0_5_4._ISpeechVoiceEvents'>
+2025-07-31 22:57:42,931 - DEBUG - Release <POINTER(IProvideClassInfo2) ptr=0x1debdd94350 at 1debdd05250>
+2025-07-31 22:57:42,933 - DEBUG - <comtypes.client._events.CreateEventReceiver.<locals>.Sink object at 0x000001DEBE378050>: _ISpeechVoiceEvents.VoiceChange not implemented
+2025-07-31 22:57:42,933 - DEBUG - <comtypes.client._events.CreateEventReceiver.<locals>.Sink object at 0x000001DEBE378050>: _ISpeechVoiceEvents.Bookmark not implemented
+2025-07-31 22:57:42,933 - DEBUG - <comtypes.client._events.CreateEventReceiver.<locals>.Sink object at 0x000001DEBE378050>: _ISpeechVoiceEvents.Sentence not implemented
+2025-07-31 22:57:42,933 - DEBUG - <comtypes.client._events.CreateEventReceiver.<locals>.Sink object at 0x000001DEBE378050>: _ISpeechVoiceEvents.Phoneme not implemented
+2025-07-31 22:57:42,933 - DEBUG - <comtypes.client._events.CreateEventReceiver.<locals>.Sink object at 0x000001DEBE378050>: _ISpeechVoiceEvents.Viseme not implemented
+2025-07-31 22:57:42,933 - DEBUG - <comtypes.client._events.CreateEventReceiver.<locals>.Sink object at 0x000001DEBE378050>: _ISpeechVoiceEvents.AudioLevel not implemented
+2025-07-31 22:57:42,934 - DEBUG - <comtypes.client._events.CreateEventReceiver.<locals>.Sink object at 0x000001DEBE378050>: _ISpeechVoiceEvents.EnginePrivate not implemented
+2025-07-31 22:57:42,934 - DEBUG - Start advise <class 'comtypes.gen._C866CA3A_32F7_11D2_9602_00C04F8EE628_0_5_4._ISpeechVoiceEvents'>
+2025-07-31 22:57:42,934 - DEBUG - <comtypes.client._events.CreateEventReceiver.<locals>.Sink object at 0x000001DEBE378050>.QueryInterface({A372ACD1-3BEF-4BBD-8FFB-CB3E2B416AF8}) -> S_OK
+2025-07-31 22:57:42,934 - DEBUG - 1 active COM objects: Added   <comtypes.client._events.CreateEventReceiver.<locals>.Sink object at 0x000001DEBE378050>
+2025-07-31 22:57:42,934 - DEBUG - <comtypes.client._events.CreateEventReceiver.<locals>.Sink object at 0x000001DEBE378050>.AddRef() -> 1
+2025-07-31 22:57:42,943 - DEBUG - Release <POINTER(IConnectionPointContainer) ptr=0x1debdd94358 at 1debdd6a650>
+2025-07-31 22:57:43,065 - DEBUG - wrap_outparam(<POINTER(ISpeechObjectToken) ptr=0x1debdd950a0 at 1debdd6a650>)
+2025-07-31 22:57:43,065 - DEBUG - Release <POINTER(ISpeechObjectToken) ptr=0x1debdd950a0 at 1debdd6a650>
+2025-07-31 22:57:43,067 - DEBUG - wrap_outparam(<POINTER(ISpeechObjectTokens) ptr=0x1debddb45a0 at 1debdd6a650>)
+2025-07-31 22:57:43,068 - DEBUG - Release <POINTER(IUnknown) ptr=0x1debf6cc0f0 at 1debdd6a350>
+2025-07-31 22:57:43,068 - DEBUG - wrap_outparam(<POINTER(IDispatch) ptr=0x1debf6adf30 at 1debdd6a1d0>)
+2025-07-31 22:57:43,068 - DEBUG - GetBestInterface(<POINTER(IDispatch) ptr=0x1debf6adf30 at 1debdd6a1d0>)
+2025-07-31 22:57:43,069 - DEBUG - Does NOT implement IProvideClassInfo, trying IProvideClassInfo2
+2025-07-31 22:57:43,070 - DEBUG - Does NOT implement IProvideClassInfo/IProvideClassInfo2
+2025-07-31 22:57:43,071 - DEBUG - Release <POINTER(IUnknown) ptr=0x1debcc9ac80 at 1debe37cad0>
+2025-07-31 22:57:43,072 - DEBUG - Default interface is {C74A3ADC-B727-4500-A84A-B526721C8B8C}
+2025-07-31 22:57:43,072 - DEBUG - Release <POINTER(IUnknown) ptr=0x1debf6adf30 at 1debe37cdd0>
+2025-07-31 22:57:43,072 - DEBUG - GetModule(TLIBATTR(GUID={C866CA3A-32F7-11D2-9602-00C04F8EE628}, Version=5.4, LCID=0, FLags=0x8))
+2025-07-31 22:57:43,072 - DEBUG - Implements default interface from typeinfo <class 'comtypes.gen._C866CA3A_32F7_11D2_9602_00C04F8EE628_0_5_4.ISpeechObjectToken'>
+2025-07-31 22:57:43,072 - DEBUG - Final result is <POINTER(ISpeechObjectToken) ptr=0x1debf6adf30 at 1debe37ced0>
+2025-07-31 22:57:43,072 - DEBUG - Release <POINTER(IDispatch) ptr=0x1debf6adf30 at 1debe37cc50>
+2025-07-31 22:57:43,073 - DEBUG - Release <POINTER(ITypeInfo) ptr=0x1debcc9ac80 at 1debe37cbd0>
+2025-07-31 22:57:43,073 - DEBUG - Release <POINTER(ITypeLib) ptr=0x1debc9b6150 at 1debe37cdd0>
+2025-07-31 22:57:43,073 - DEBUG - Release <POINTER(IDispatch) ptr=0x1debf6adf30 at 1debdd6a1d0>
+2025-07-31 22:57:43,073 - DEBUG - Release <POINTER(IEnumVARIANT) ptr=0x1debf6cc0f0 at 1debdd6a450>
+2025-07-31 22:57:43,073 - DEBUG - Release <POINTER(ISpeechObjectTokens) ptr=0x1debddb45a0 at 1debdd6a650>
+2025-07-31 22:57:43,073 - DEBUG - Release <POINTER(ISpeechObjectToken) ptr=0x1debf6adf30 at 1debe37ced0>
+2025-07-31 22:57:43,173 - DEBUG - https://api.telegram.org:443 "POST /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/sendMessage?chat_id=5374336141&text=The+speak+text+russian+command+is+complete HTTP/1.1" 200 312
+2025-07-31 22:57:43,174 - INFO - տեքստը ռուսերենով ասել եմ 
+2025-07-31 22:57:55,311 - DEBUG - https://api.telegram.org:443 "GET /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/getUpdates?offset=934251267&timeout=20 HTTP/1.1" 200 345
+2025-07-31 22:57:55,313 - INFO - text ը պահպանեցի
+2025-07-31 22:58:15,398 - DEBUG - https://api.telegram.org:443 "GET /bot7674897043:AAFET1rFtvWzBn8uHDCTlOKeCP6cTD4-WFQ/getUpdates?offset=934251268&timeout=20 HTTP/1.1" 200 23
