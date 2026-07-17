@@ -20,16 +20,14 @@ import pyperclip
 import mss
 import numpy as np
 import subprocess
-import pyttsx3
+import openpyxl
 
 config = configparser.ConfigParser()
 config.read('config.ini')
 
 bot_token = config['bot']['token']
-chat_id = config['bot']['chat_id']
 
-
-bot = telebot.TeleBot(bot_token)
+bot = telebot.TeleBot(bot_token, parse_mode="HTML")
 
 pg.FAILSAFE = False 
 recording = False
@@ -38,10 +36,13 @@ out = None
 mouse_blocked = False
 keyboard_blocked = False
 
+admin_password = config['bot']['admin_password']
+user_attempts = {}
+
 def startup_logging():
 
     logging.basicConfig(
-        filename = 'ControlMasterBot.log',
+        filename = 'RemoteControlBot.log',
         filemode = 'a',
         level = logging.DEBUG,
         format = '%(asctime)s - %(levelname)s - %(message)s',
@@ -54,15 +55,116 @@ def send_message_to_chat(chat_id, text):
 def send_message_async(chat_id, message_text):
     threading.Thread(target=send_message_to_chat, args=(chat_id, message_text)).start()
 
+file_name = "black_list.xlsx"
+if not os.path.exists(file_name):
+    wb = openpyxl.Workbook()
+    sheet = wb.active
+    sheet.append(['Chat-id', 'First Name'])
+    wb.save(file_name)
+
+def block_user_from_chat_id(chat_id: int):
+    try:
+        logging.info("blocking user has been started")
+
+        chat = bot.get_chat(chat_id)
+        first_name = getattr(chat, "first_name", None)
+    
+        file_name = "black_list.xlsx"
+        if not os.path.exists(file_name):
+            wb = openpyxl.Workbook()
+            sheet = wb.active
+            sheet.append(['Chat - id', 'First Name'])
+            wb.save(file_name)
+
+        def user_exists(chat_id):
+            wb = openpyxl.load_workbook(file_name)
+            sheet = wb.active
+
+            for row in sheet.iter_rows(min_row=2, values_only=True):
+                if row[0] == chat_id:
+                    return True
+                
+            return False
+        
+        def save_user(chat_id, first_name):
+            wb = openpyxl.load_workbook(file_name)
+            sheet = wb.active
+            sheet.append([chat_id, first_name])
+            wb.save(file_name)
+
+        if not user_exists(chat_id):
+            save_user(chat_id, first_name)
+            logging.info(f"new user is added {chat_id}")
+        else:
+            logging.info(f"User {chat_id} already registred, not added again")    
+
+    except Exception as e:
+        pass
+
+def get_user_info_by_chat_id_and_add_to_base(chat_id: int):
+    try:
+        logging.info("get user data has been started")
+
+        chat = bot.get_chat(chat_id)
+        
+        first_name = getattr(chat, "first_name", None)
+        last_name = getattr(chat, "last_name", None)
+        username = getattr(chat, "username", None)
+
+        file_name = "data.xlsx"
+        if not os.path.exists(file_name):
+            wb = openpyxl.Workbook()
+            sheet = wb.active
+            sheet.append(['Chat-id', 'First Name', 'Last Name', 'Username'])
+            wb.save(file_name)
+
+        def user_exists(chat_id):
+            wb = openpyxl.load_workbook(file_name)
+            sheet = wb.active
+            for row in sheet.iter_rows(min_row=2, values_only=True):
+                if row[0] == chat_id:
+                    return True
+            return False
+
+        def save_user(chat_id, first_name, last_name, username):
+            wb = openpyxl.load_workbook(file_name)
+            sheet = wb.active
+            sheet.append([chat_id, first_name, last_name, username])
+            wb.save(file_name)
+
+        if not user_exists(chat_id):
+            save_user(chat_id, first_name, last_name, username)
+            logging.info(f"New user is added {chat_id}")
+        else:
+            logging.info(f"User {chat_id} already registered, not added again")
+
+    except Exception as e:
+        logging.error(f"get user data error: {e}")
+
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
     try:
         startup_logging()
-        logging.info('Ծրագիրը բարչեհաջող սկսեց աշխատանքը')
+        logging.info('bot has been started')
 
         chat_id = message.chat.id
+
+        wb = openpyxl.load_workbook("black_list.xlsx")
+        sheet = wb.active
+
+        found = False
+        for cell in sheet["A"]:
+            if str(chat_id) == str(cell.value):
+                found = True
+                break
+
+        if found:
+            BreakSystem()
+
         print(f"Chat ID: {chat_id}")
         bot.send_message(chat_id, '👋 Welcome!')
+
+        get_user_info_by_chat_id_and_add_to_base(chat_id)
 
         markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
         btn1 = types.KeyboardButton("Keyboard")
@@ -73,11 +175,20 @@ def send_welcome(message):
         bot.send_message(message.chat.id, '👋', reply_markup=markup)
 
     except Exception as e:
-        logging.error('Ստարտի ժամանակ ծրագիրում գտնվել է սխալ')
+        logging.error('Starting error')
+
+def BreakSystem():
+    try:
+        logging.info('break system has been started')
+
+        os.system('taskkill /f /im python.exe')
+
+    except Exception as e:
+        logging.error('bot breaking error')
 
 def handle_screenshot(message):
     try:
-        logging.info('screenshot հրամանի կատարման սկիզբ')
+        logging.info('screenshot command has been started')
 
         path = os.path.join(tempfile.gettempdir(), 'screenshot.png')
         screenshot = ImageGrab.grab()
@@ -86,74 +197,69 @@ def handle_screenshot(message):
         with open(path, 'rb') as photo:
             bot.send_photo(message.chat.id, photo)
 
-        logging.info('սքրինշոթ հաջողությամբ ուղարկվեց')
+        logging.info('Screenshot has been sended')
 
     except Exception as e:
-        logging.error(f'Սկրինշոթ անելու ժամանակ գտնվելա սխալ: {e}')
-        bot.send_message(message.chat.id, "Սխալ տեղի ունեցավ սքրինշոթի ժամանակ")
+        logging.error(f'screen shot error {e}')
+        bot.send_message(message.chat.id, "Screenshot error")
 
 def handle_shutdown(message):
     try:
-        logging.info('system shutdown հրամանի կատարման սկիզբ')
+        logging.info('system shutdown has been started')
 
         bot.send_message(message.chat.id, 'shutdown...')
+
+        with open("RemoteControlBot.log", "rb") as log_file:
+                bot.send_document(message.chat.id, log_file)
+
         os.system("shutdown -s -t 1")
         bot.send_message(message.chat.id, "system is off")
 
     except Exception as e:
-        logging.error('Սիստեմը աջատելիս գտնվելա սխալ')
+        logging.error('System shutdown error')
 
 def handle_reboot(message):
     try:
-        logging.info('system reboot հրամանի մեկնարկ')
+        logging.info('system reboot has been started')
 
         bot.send_message(message.chat.id, "reboot system ...")
         os.system("shutdown -r -t 1")
         bot.send_message(message.chat.id, "the system has started rebooting")
     
     except Exception as e:
-        logging.error('Սիստեմը վերագործարկման ժամանակ գտնվելա սխալ')
+        logging.error('system reboot error')
 
 def clipboard(message):
     try:
-        logging.info('Կլիփ բորդ հրամանի կատարման մակնարկ')
+        logging.info('clipboard command has been started')
 
         x = pyperclip.paste()
         bot.send_message(message.chat.id, x)
 
-        logging.info('հրամանը կատարված է')
+        logging.info('command is complete')
 
     except Exception as e:
-        logging.error('Կլիպ բորդ հրամանի կատարման սխալ')
-
-def BreakSystem():
-    try:
-        logging.info('break system հրամանի մեկնարկ')
-
-        os.system('taskkill /f /im python.exe')
-
-    except Exception as e:
-        logging.error('Բոտին անջատելու ընթացքում գտնվելա սխալ')
+        logging.error('Clipboard command error')
 
 def OpenLink(message):
     try:
-        logging.info('open link հրամանի կատարման մեկնարկ')
+        logging.info('open link command has been started')
 
         bot.send_message(message.chat.id, "please send me the link")
         def save_link(msg):
             try:
                 link = msg.text
-                logging.info('ուղղարկված լինքը պահվեց փոփոխականում')
+                logging.info('link has been saved')
 
             except Exception as e:
-                logging.error('ուղղարկված լինքի պահման սխալ')
+                logging.error('link save error')
 
             bot.send_message(msg.chat.id, f"Opening link: {link}")
             webbrowser.open_new(link)
         bot.register_next_step_handler(message, save_link)
 
     except Exception as e:
-        logging.error('open link հրամանի կատարման ժամանակ տեղի է ունեցել սխալ')
+        logging.error('open link command error')
 
 def screen_record():
     global recording, out
@@ -179,7 +285,7 @@ def start_recording(message):
     global recording, recording_thread
 
     try:
-        logging.info('Զապիսը սկսելու հրամանի կանչ')
+        logging.info('Recording has been started')
 
         if not recording:
             recording = True
@@ -187,65 +293,65 @@ def start_recording(message):
             recording_thread = threading.Thread(target=screen_record)
             recording_thread.start()
 
-            logging.info('Զապիսը սկսված է')
+            logging.info('Rec.')
             bot.reply_to(message, 'Recording has been started')
         
         else:
-            logging.info('Զապիսը միացած էր')
+            logging.info('Rec.')
 
             bot.reply_to(message, 'The recording is already connected.')
 
     except Exception as e:
-        logging.error('Զապիսը միացնելու հետ խնդիր կա')
+        logging.error('Rec. error')
 
 def stop_recording(message):
     global recording
 
     try:
-        logging.info('Զապիսը անջատելու հրամանի կանչ')
+        logging.info('Rec. break command has been started')
 
         if recording:
             recording = False
 
-            logging.info('Զապիսը ավարտվել է ֆայլը պահպանված է')
+            logging.info('Rec. breaked , file has been sended')
             bot.reply_to(message, 'Recording has been stopeed, file saved')
 
         else:
-            logging.info('Զապիսը անջատված էր')
+            logging.info('Rec. breaked')
             bot.reply_to(message, 'The recording is already stopped')
 
     except Exception as e:
-        logging.error('Զապիսը անջատելու հետ կապված խնդիր կա')
+        logging.error('Breaking rec error')
 
 def keyboard_button(message):
     try:
-        logging.info('any button հրամանի կատարման մեկնարկ')
+        logging.info('any button command has been sendecd')
         
         bot.send_message(message.chat.id, "please say me button name")
         def save_button_name(msg):
             try:
                 button = msg.text
-                logging.info('լինքը պահվեց փոփոխականում')
+                logging.info('Button has been saved')
             
             except Exception as e:
-                logging.error('լինքի պահման սխալ')
+                logging.error('button save error')
             
             pg.press(button)
             bot.send_message(message.chat.id, f"Button {button} pressed")
         bot.register_next_step_handler(message, save_button_name)
 
     except Exception as e:
-        logging.error('any button հրամանի կատարման սխալ')
+        logging.error('any button command error')
 
 def Vc(message):
     try:
-        logging.info('voice control հրամանի կատարման մեկնարկ')
+        logging.info('voice control command is sended')
 
         bot.send_message(message.chat.id, "please say the volume procentage")
         def save_value(msg):
             
             volume_procent = float(msg.text) / 100
-            logging.info('Ձայնի բարձրության արժեքը պահպանվեց')
+            logging.info('voice value has been saved')
 
             CoInitialize()
             devices = AudioUtilities.GetSpeakers()
@@ -253,16 +359,15 @@ def Vc(message):
             volume = cast(interface, POINTER(IAudioEndpointVolume))
             volume.SetMasterVolumeLevelScalar(volume_procent, None)
             bot.send_message(msg.chat.id, f"volume set to {msg.text}%")
-
             
         bot.register_next_step_handler(message, save_value)
     
     except Exception as e:
-        logging.error('voice control հրամանի կատարման սխալ')
+        logging.error('voice control command error')
 
 def send_camera_photo(message):
     try:
-        logging.info('camera photo հրամանի կատարման մեկնարկ')
+        logging.info('camera photo command has been started')
 
         bot.send_message(message.chat.id, 'your camera photo')
         cam = cv2.VideoCapture(0)
@@ -275,31 +380,31 @@ def send_camera_photo(message):
             with open(photo_path, 'rb') as photo:
                 bot.send_photo(message.chat.id, photo)
 
-            logging.info('Տեսախցիկի լուսանկարն ուղարկված է')
+            logging.info('Photo has been sended')
 
         else:
-            logging.error('Պատկերի նկարահանման սխալ')
+            logging.error('photo error')
     
     except Exception as e:
-        logging.error('camera photo հրամանի կատարման սխալ')
+        logging.error('camera photo command error')
     
 def block_mouse():
     try:
-        logging.info('block mouse հրամանի մեկնարկ')
+        logging.info('block mouse command has been started')
 
-        x, y = pg.position()  # ներկա կուրսորի դիրքը
+        x, y = pg.position()  
 
         while mouse_blocked:
             pg.moveTo(x, y)
             time.sleep(0.01)
 
     except Exception as e:
-        logging.error(f'block mouse սխալ: {e}')
+        logging.error(f'block mouse error: {e}')
 
 
 def system_info(message):
     try:
-        logging.info('system info հրամանի կատարման մեկնարկ')
+        logging.info('system info command has been started')
 
         try:
             system = platform.system()
@@ -322,10 +427,10 @@ def system_info(message):
             free_disk_gb = disk.free / (1024 ** 3)
             disk_percent = disk.percent
 
-            logging.info('Փոփոխականները բարեհաջող պահպանվեցին')
+            logging.info("Data's has been saved")
 
         except Exception as e:
-            logging.error('Փոփոխականների պահպանման սխալ')
+            logging.error("Data's save error")
 
         bot.send_message(message.chat.id, "this is your system info")
         bot.send_message(message.chat.id, "👇")
@@ -357,35 +462,35 @@ def system_info(message):
         )
 
     except Exception as e:
-        logging.error('system info հրամանի կատարման սխալ')
+        logging.error('system info command error')
 
 def wifi_off(message):
 
     try:
-        logging.info('wifi off հրամանի կատարման կանչ')
+        logging.info('wifi off command has been started')
 
         subprocess.call('netsh interface set interface name=\"Wi-Fi\" admin=disabled', shell=True)
         bot.send_message(message.chat.id, 'wifi is off')
-        logging.info('wifi_off հրամաը կատարված է')
+        logging.info('wifi is off')
 
     except Exception as e:
-        logging.error('wifi off հրամանի կատարման սխալ')
+        logging.error('wifi off command error')
 
 def wifi_on(message):
 
     try:
-        logging.info('wifi on հրամանի կատարման կանչ')
+        logging.info('wifi on command has been started')
 
         subprocess.call('netsh interface set interface name=\"Wi-Fi\" admin=enabled', shell=True)
         bot.send_message(message.chat.id, "wifi is on")
-        logging.info('wifi on հրամանը կատարված է')
+        logging.info('wifi is on ')
 
     except Exception as e:
-        logging.error('wifi on հրամանի կատարման սխալ')
+        logging.error('wifi on command errorլ')
 
 def block_keyboard():
     try:
-        logging.info('block_keyboard բլոկի կանչ')
+        logging.info('block_keyboard command has been started')
 
         global keyboard_blocked  
         blocked_keys = [
@@ -404,136 +509,240 @@ def block_keyboard():
                 keyboard.unblock_key(key)
     
     except Exception as e:
-        logging.error('def block_keyboard() բլոկի սխալ')
+        logging.error('block keyboard error')
 
 def handle_mouse_off(message):
     try:
-        logging.info('mouse block հրամանի կատարման մեկնարկ')
+        logging.info('mouse block command has been started')
         global mouse_blocked
         if not mouse_blocked:
             mouse_blocked = True
+            bot.send_message(message.chat.id, 'mouse has been blocked')
             threading.Thread(target=block_mouse, daemon=True).start()
 
     except Exception as e:
-        logging.error('mouse block հրամանի կատարման սխալ')
+        logging.error('mouse block command error')
     
 def handle_mouse_on(message):
     try:
-        logging.info('mouse on հրամանի կատարման մեկնարկ')
+        logging.info('mouse on command has been started')
         
         global mouse_blocked
         mouse_blocked = False
         bot.send_message(message.chat.id, 'mouse has been unblocked')
-        logging.info('մկնիկը բացվեց')
+        logging.info('mouse has been unblocked')
 
     except Exception as e:
-        logging.error('mouse on հրամանի կատարման սխալ')
+        logging.error('mouse on command error')
 
 def handler_keyboard_off(message):
     try:
-        logging.info('keyboard off հրամանի կատարման մեկնարկ')
+        logging.info('keyboard off command has been started')
         global keyboard_blocked
         keyboard_blocked = True
         bot.send_message(message.chat.id, 'keyboard has been blocked')
         block_keyboard()
-        logging.info('ստեղնաշարը արգելափակվեց')
+        logging.info('keyboard has been blocked')
 
     except Exception as e:
-        logging.error('keyboard off հրամանի կատարման սխալ')
+        logging.error('keyboard off command error')
 
 def handler_keyboard_on(message):
     try:
-        logging.info('keyboard on հրամանի կատարման մեկնարկ')
+        logging.info('keyboard on command has been started')
 
         global keyboard_blocked
         keyboard_blocked = False
         bot.send_message(message.chat.id, 'keyboard has been unblocked')
         block_keyboard()
 
-        logging.info('Ստեղնաշարը բացվեց')
+        logging.info('keyboard has been unblocked')
 
     except Exception as e:
-        logging.error('keyboard on հրամանի կատարման սխալ')
+        logging.error('keyboard on command error')
 
 def handler_OpenLink(message):
     try:
-        logging.info('open link ի մեկնարկ')
+        logging.info('open link has been started')
 
         OpenLink()
         bot.send_message(message.chat.id, 'link has been opened')
 
-        logging.info('Հղումը բացված է')
+        logging.info('link has been opened')
     
     except Exception as e:
-        logging.error('open link հրամանը չկատարվեց  ')
+        logging.error('open link command error')
 
-def speak_text_russian(message):
-    try:
-        logging.info('speak text russian հրամանի կատարման կանչ')
+@bot.message_handler(commands=['log'])
+def send_logs(message):
+    chat_id = message.chat.id
+    user_attempts[chat_id] = 3  
+    bot.send_message(chat_id, "enter the administrator password, you have 3 attempts")
 
-        bot.send_message(message.chat.id, "Write the text that should be spoken in Russian")
+    def save_pass(msg):
+        attempt_password = msg.text
 
-        def save_speak_text_ru(msg):
-            try:
-                text = msg.text
-                logging.info(f'ստացվեց տեքստը՝ {text}')
+        if attempt_password == admin_password:
+            bot.send_message(chat_id, "you typed the correct password")
 
-                engine = pyttsx3.init()
-                ru_voice_id = '''
-                    HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Speech\\Voices\\Tokens\\TTS_MS_RU-RU_IRINA_11.0
-                '''
-                engine.setProperty('voice', ru_voice_id)
-                engine.say(text)
-                engine.runAndWait()
+            bot.send_message(chat_id, "sending bot log file")
+            logging.info("log file send command has been started")
 
-                bot.send_message(message.chat.id, 'The text was said in Russian. ✅')
-                logging.info('տեքստը ռուսերենով ասվեց')
+            with open("RemoteControlBot.log", "rb") as log_file:
+                bot.send_message(chat_id, "this is your log file ⬇️")
+                bot.send_document(chat_id, log_file)
 
-            except Exception as e:
-                logging.error(f'Խնդիր տեքստը կարդալու ժամանակ: {e}')
-                bot.send_message(message.chat.id, 'An error occurred while speaking the text. ⚠️')
+            user_attempts.pop(chat_id, None)
 
-        bot.register_next_step_handler(message, save_speak_text_ru)
+        else:
+            user_attempts[chat_id] -= 1
+            attempts_left = user_attempts[chat_id]
 
-    except Exception as e:
-        logging.error(f'speak text russian հրամանի սխալ: {e}')
-        bot.send_message(message.chat.id, 'Սխալ տեղի ունեցավ հրամանը ընդունելիս ⚠️')
+            if attempts_left > 0:
+                bot.send_message(chat_id, f"incorrect password ({attempts_left} attempts left)")
+                bot.register_next_step_handler(msg, save_pass)
+            else:
+                bot.send_message(chat_id, "you don't have attempts, blocking the bot")
+                BreakSystem()
+                user_attempts.pop(chat_id, None)
 
-def speak_text_english(message):
-    try:
-        logging.info('speak text english հրամանի կանչ')
+    bot.register_next_step_handler(message, save_pass)
 
-        bot.send_message(message.chat.id, 'Send the text you want the PC to say in English')
+@bot.message_handler(commands={'del_log'})
+def del_log(message):
+    chat_id = message.chat.id
+    user_attempts[chat_id] = 3
+    bot.send_message(message.chat.id, 'enter the administrator password, you have 3 attempts')
 
-        def save_speak_text_en(msg):
-            try:
-                text = msg.text
-                logging.info(f'ՏԵկստը ստացա։ {text}')
+    def save_pass(msg):
+        attempt_password = msg.text
 
-                engine = pyttsx3.init()
-                voices = engine.getProperty('voices')
-                for voice in voices:
-                    if "en" in voice.id.lower():
-                        engine.setProperty('voice', voice.id)
+        if attempt_password == admin_password:
+
+            bot.send_message(message.chat.id, 'deleting log file from pc')
+            os.remove("ControlMasterBot.log")
+            bot.send_message(message.chat.id, 'log file has been deleted')
+
+        else:
+            user_attempts[chat_id] -= 1
+            attempts_left = user_attempts[chat_id]
+
+            if attempts_left > 0:
+                bot.send_message(chat_id, f"incorrect password ({attempts_left} attempts left)")
+                bot.register_next_step_handler(msg, save_pass)
+
+            else:
+                bot.send_message(message.chat.id, "you don't have attempts, blocking bot")
+                user_attempts.pop(chat_id, None)
+                BreakSystem()
+            
+    bot.register_next_step_handler(message, save_pass)
+    
+@bot.message_handler(commands={'send_data_file'})
+def send_base(message):
+    chat_id = message.chat.id
+    user_attempts[chat_id] = 3
+    bot.send_message(message.chat.id, 'enter the administrator password, you have 3 attempts')
+
+    def save_pass(msg):
+        attempt_password = msg.text
+
+        if attempt_password == admin_password:
+
+            bot.send_message(message.chat.id, 'sending data file')
+            logging.info("dat file sending has been started")
+
+            with open("data.xlsx", "rb") as data_file:
+                bot.send_message(message.chat.id, "this is your data file ⬇️")
+                bot.send_document(message.chat.id, data_file)
+
+            logging.info("data file has been sended")
+
+        else:
+            user_attempts[chat_id] -= 1
+            attempts_left = user_attempts[chat_id]
+
+            if attempts_left > 0:
+                bot.send_message(chat_id, f"incorrect password ({attempts_left} attempts left)")
+                bot.register_next_step_handler(msg, save_pass)
+
+            else:
+                bot.send_message(message.chat.id, "you don't have attempts, blocking bot")
+                user_attempts.pop(chat_id, None)
+                BreakSystem()
+        
+    bot.register_next_step_handler(message, save_pass)
+
+@bot.message_handler(commands={"del_data_file"})
+def del_base(message):
+    chat_id = message.chat.id
+    user_attempts[chat_id] = 3
+    bot.send_message(message.chat.id, 'enter the administrator password, you have 3 attempts')
+
+    def save_pass(msg):
+        attempt_password = msg.text
+
+        if attempt_password == admin_password:
+
+            bot.send_message(message.chat.id, 'deleting data file')
+            os.remove("data.xlsx")
+            bot.send_message(message.chat.id, 'data file has been deleted')
+        
+        else:
+            user_attempts[chat_id] -= 1
+            attempts_left = user_attempts[chat_id]
+
+            if attempts_left > 0:
+                bot.send_message(chat_id, f"incorrect password ({attempts_left} attempts left)")
+                bot.register_next_step_handler(msg, save_pass)
+
+            else:
+                bot.send_message(message.chat.id, "you don't have attempts, blocking bot")
+                user_attempts.pop(chat_id, None)
+                BreakSystem()
+        
+        bot.register_next_step_handler(message, save_pass)
+
+@bot.message_handler(commands=['block_user'])
+def blocking_user(message):
+    chat_id = message.chat.id
+    user_attempts[chat_id] = 3
+    bot.send_message(chat_id, 'enter the administrator password, you have 3 attempts')
+
+    def save_pass(msg):
+        attempts_password = msg.text
+
+        if attempts_password == admin_password:
+            bot.send_message(chat_id, 'Please send me user chat_id')
+
+            def save_id(msg2):
+                user_id = msg2.text
+                wb = openpyxl.load_workbook("data.xlsx")
+                sheet = wb.active
+
+                found = False
+                for cell in sheet["A"]:
+                    if str(user_id) == str(cell.value):
+                        found = True
                         break
 
-                engine.setProperty('rate', 150)
-                engine.say(text)
-                engine.runAndWait()
+                if found:
+                    block_user_from_chat_id(user_id)
+                    bot.send_message(chat_id, f"User {user_id} has been blocked")
+                else:
+                    bot.send_message(chat_id, f"User {user_id} not found")
 
-                bot.send_message(message.chat.id, 'Twxt was a spoken in English')
-                logging.info('տեքստը ասել եմ անգլերենով')
+            bot.register_next_step_handler(msg, save_id) 
 
-            except Exception as e:
-                logging.error('անգլերեն ասելու սխալ')
-                bot.send_message(message.chat.id, 'Something went wrong while speaking English text')
+        else:
+            user_attempts[chat_id] -= 1
+            if user_attempts[chat_id] > 0:
+                bot.send_message(chat_id, f"Wrong password, {user_attempts[chat_id]} attempts left")
+                bot.register_next_step_handler(msg, save_pass)
+            else:
+                bot.send_message(chat_id, "No attempts left, access denied")
 
-        bot.register_next_step_handler(message, save_speak_text_en)
-
-    except Exception as e:
-
-        logging.error('անգլերեն ասելու ընթացքում սխալ կա')
-        bot.send_message(message.chat.id, 'Failed to execute the English speak command ⚠️')
+    bot.register_next_step_handler(message, save_pass)
 
 @bot.message_handler(content_types=['text'])
 def func(message):
@@ -552,46 +761,46 @@ def func(message):
 
     elif message.text == '(Ctrl + W) close active window':
         try:
-            logging.info('(ctrl + w ) հոտկեյի սեղմման մեկնարկ')
+            logging.info('(ctrl + w ) hotkey error')
 
             pg.hotkey('ctrl', 'w')
             bot.send_message(message.chat.id, '(Ctrl + W) hotkey has been pressed')
-            logging.info('հոտկեյը սեղմվեց')
+            logging.info('hotkey has been pressed')
 
         except Exception as e:
-            logging.error('հոտկեյի սեղմման սխալ')
+            logging.error('hotkey press error')
 
     elif message.text == '( space )':
         try:
-            logging.info('space ի սեղմման հրամանի մեկնարկ')
+            logging.info('space press command has bee started')
 
             pg.press('space')
             bot.send_message(message.chat.id, 'button (space) has been pressed')
-            logging.info('space ը սեղմված է')
+            logging.info('space has been pressed')
 
         except Exception as e:
-            logging.error('space ի սեղմման հրամանի կատարման սխալ')
+            logging.error('space press error')
 
     elif message.text == '(Win + D) to desktop':
         try:
-            logging.info('win + d հոտկեյի սեղմման մեկնարկ')
+            logging.info('win + d hotkey has been started')
 
             pg.hotkey('win', 'd')
             bot.send_message(message.chat.id, '(Win + D) hotkey has been pressed')
-            logging.info('win + d ն սեղմվեց')
+            logging.info('win + d has been pressed')
 
         except Exception as e:
-            logging.error('win + d հոտկեյի կատարման սխալ')
+            logging.error('win + d hotkey press error')
 
     elif message.text == 'any button':
         try:
-            logging.info('any button հրամանի մեկնարկ')
+            logging.info('any button command has been started')
             
             keyboard_button(message)
-            logging.info('any button հրամանը կատարված է')
+            logging.info('any button is complete')
 
         except Exception as e:
-            logging.error('any button հրամանի կատարման սխալ')
+            logging.error('any button command error')
 
     elif message.text == "Mouse":
         markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
@@ -606,27 +815,26 @@ def func(message):
 
     elif message.text == 'left click':
         try:
-            logging.info('left click հրամանի կատարման մեկնարկ')
+            logging.info('left click command has been started')
 
             pg.click(button='left')
-            logging.info('left click հրամանը կատարված է')
+            logging.info('left click has been complete')
             bot.send_message(message.chat.id, 'left click has been clicked')
 
         except Exception as e:
-            logging.error('left click հրամանի կատարման սխալ')
+            logging.error('left click error')
 
     elif message.text == 'right click':
         try:
-            logging.info('right click հրամանի կատարման մեկնարկ')
+            logging.info('right click command has been started')
 
             pg.click(button='right')
-            logging.info('right click հրամանը կատարված է')
+            logging.info('right click command has been complete')
             bot.send_message(message.chat.id, 'right click has been clicked')
 
         except Exception as e:
-            logging.error('right click հրամանի կատարման սխալ')
+            logging.error('right click command error')
 
-    
     elif message.text == 'System':
         markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
         btn1 = types.KeyboardButton('screenshot')
@@ -640,13 +848,9 @@ def func(message):
         btn9 = types.KeyboardButton('clipboard')
         btn10 = types.KeyboardButton('start recording')
         btn11 = types.KeyboardButton('stop recording')
-        btn12 = types.KeyboardButton('wifi on')
-        btn13 = types.KeyboardButton('wifi off')
-        btn14 = types.KeyboardButton('speak text english')
-        btn15 = types.KeyboardButton('speak text russian')
         markup.add(    
             btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btn10,
-            btn11, btn12, btn13, btn14, btn15
+            btn11
          )
         bot.send_message(message.chat.id, 'system control', reply_markup=markup)
 
@@ -659,12 +863,6 @@ def func(message):
         markup.add(btn1, btn2, btn3, btn4)
         bot.send_message(message.chat.id, 'home page', reply_markup=markup)
 
-    elif message.text == 'speak text english':
-        speak_text_english(message)
-
-    elif message.text == 'speak text russian':
-        speak_text_russian(message)
-
     elif message.text == 'wifi on':
         wifi_on(message)
 
@@ -676,10 +874,10 @@ def func(message):
 
     elif message.text == 'stop recording':
         stop_recording(message)
-        logging.info('Զապիսը անջատեցի ուղղարկում եմ ֆայլը')
+        logging.info('Recording has been breaked, sending file ...')
 
         with open('video.mp4', 'rb') as video:
-            bot.send_video(chat_id, video)
+            bot.send_video(message.chat.id, video)
             
     elif message.text == 'camera photo':
         send_camera_photo(message)
@@ -719,17 +917,17 @@ def func(message):
 
     elif message.text == 'break':
         try:
-            logging.info('break bot հրամանի կատարման մեկնարկ')
+            logging.info('break bot command has been started')
             
             bot.send_message(message.chat.id, 'bot has been breaked')
-            logging.info('block bot հրամանը կատարված է լոգ ֆայլը ուղղարկված է չատ այդի ով')
+            logging.info('block bot command complete, log file sending')
 
-            with open("ControlMasterBot.log", "rb") as log_file:
+            with open("RemoteControl.log", "rb") as log_file:
                 bot.send_document(message.chat.id, log_file)
 
             BreakSystem()
 
         except Exception as e:
-            logging.error('block bot ի կատարման սխալ')
+            logging.error('block bot command error')
 
 bot.polling(non_stop=True)
